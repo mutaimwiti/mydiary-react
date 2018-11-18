@@ -1,0 +1,10 @@
+/*A nice font*/
+html {
+    font-family: "Lucida Sans", sans-serif;
+}
+
+/*We go all the way to the edges*/
+body {
+    margin: 0;
+    color: #636b6f;
+}
