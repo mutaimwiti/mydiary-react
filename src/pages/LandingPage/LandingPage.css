@@ -2,7 +2,7 @@
 Landing page
  */
 #showcase {
-    background-image:url("../../../assets/images/showcase.jpg");
+    background-image: url("../../../assets/images/showcase.jpg");
     background-size: cover;
     background-position: center;
     height: 100vh;
@@ -36,7 +36,7 @@ Landing page
     border: #322f5a 1px solid;
     padding: 8px 16px;
     border-radius: 5px;
-    margin:5px;
+    margin: 5px;
 }
 
 #showcase #buttons a:hover {

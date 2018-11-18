@@ -6,20 +6,20 @@ import {
 import {getAuth} from "../../utils/auth";
 import ROUTES from "./routes";
 
-export class ProtectedRoute extends Component {
+export default class AuthenticatedRoute extends Component {
   constructor(props) {
     super(props);
     this.token = getAuth();
     this.isAuthenticated = this.token !== null;
   }
 
-  renderUnauthenticated(component) {
+  renderUnprotected(component) {
     const {path} = this.props;
     return (path === ROUTES.auth.login || path === ROUTES.auth.signUp)
-      ? Component : <Redirect to={{pathname: ROUTES.auth.login}}/>;
+      ? component : <Redirect to={{pathname: ROUTES.auth.login}}/>;
   }
 
-  renderAuthenticated(component) {
+  renderProtected(component) {
     const {path, location} = this.props;
     return (path === ROUTES.auth.login || path === ROUTES.auth.signUp)
       ? <Redirect to={{pathname: ROUTES.entries.index, state: {from: location}}}/> : component;
@@ -33,8 +33,8 @@ export class ProtectedRoute extends Component {
         render={
           props => (
             this.isAuthenticated ?
-              this.renderAuthenticated(<ComponentToRender {...props} />) :
-              this.renderUnauthenticated(<ComponentToRender {...props} />)
+              this.renderProtected(<ComponentToRender {...props} />) :
+              this.renderUnprotected(<ComponentToRender {...props} />)
           )
         }
       />
